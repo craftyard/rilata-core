@@ -1,6 +1,6 @@
 /* eslint-disable no-use-before-define */
 import { LiteralFieldValidator } from '../../../../src/domain/validator/field-validator/literal-field-validator';
-import { RegexFormatValidationRule } from '../../../../src/domain/validator/rules/validate-rules/string/regex.field-v-rule';
+import { RegexReturnTrueFormatValidationRule } from '../../../../src/domain/validator/rules/validate-rules/string/regex-matches-value.field-v-rule';
 import { EqualCharsCountValidationRule } from '../../../../src/domain/validator/rules/validate-rules/string/equal-chars-count.v-rule';
 import { StringChoiceValidationRule } from '../../../../src/domain/validator/rules/validate-rules/string/string-choice.v-rule';
 import { RangeNumberValidationRule } from '../../../../src/domain/validator/rules/validate-rules/number/range-number.v-rule';
@@ -19,7 +19,7 @@ export namespace FieldValidatorPrivateFixtures {
       { isArray: false },
       'string',
       [
-        new RegexFormatValidationRule(
+        new RegexReturnTrueFormatValidationRule(
           /^\+7-\d{3}-\d{3}-\d{2}-\d{2}$/,
           'Строка должна соответствовать формату: "+7-###-##-##"',
         ),

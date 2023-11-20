@@ -5,7 +5,7 @@ import { StringChoiceFieldValidator } from '../../../../../src/domain/validator/
 import { UuidField } from '../../../../../src/domain/validator/field-validator/prepared-fields/string/uuid-field';
 import { ValidatorMap } from '../../../../../src/domain/validator/field-validator/types';
 import { EmailFormatValidationRule } from '../../../../../src/domain/validator/rules/validate-rules/string/email-format.field-v-rule';
-import { RegexFormatValidationRule } from '../../../../../src/domain/validator/rules/validate-rules/string/regex.field-v-rule';
+import { RegexMatchesValueValidationRule } from '../../../../../src/domain/validator/rules/validate-rules/string/regex-matches-value.field-v-rule';
 import { PhoneNumberFieldValidator } from './field-validators';
 import {
   ContactsAttrs, EmailAttrs, PersonAttrs, PhoneAttrs,
@@ -29,7 +29,7 @@ const contactsVMap: ValidatorMap<ContactsAttrs> = {
 
 export const personAttrsVMap: ValidatorMap<PersonAttrs> = {
   id: new UuidField('id'),
-  govPersonId: new CannotEmptyStringField('govPersonId', true, [new RegexFormatValidationRule(/^[0-9]{12}$/, 'ИИН должен содержать только 12 цифровых символов.')]),
+  govPersonId: new CannotEmptyStringField('govPersonId', true, [new RegexMatchesValueValidationRule(/^[0-9]{12}$/, 'ИИН должен содержать только 12 цифровых символов.')]),
   name: new CannotEmptyStringField('name', true, []),
   lastName: new CannotEmptyStringField('lastName', true, []),
   patronomic: new CannotEmptyStringField('patronomic', false, []),

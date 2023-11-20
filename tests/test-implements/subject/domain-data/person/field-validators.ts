@@ -1,7 +1,7 @@
 import { LiteralFieldValidator } from '../../../../../src/domain/validator/field-validator/literal-field-validator';
 import { GetArrayConfig } from '../../../../../src/domain/validator/field-validator/types';
 import { GeneralValidationRule } from '../../../../../src/domain/validator/rules/types';
-import { RegexFormatValidationRule } from '../../../../../src/domain/validator/rules/validate-rules/string/regex.field-v-rule';
+import { RegexMatchesValueValidationRule } from '../../../../../src/domain/validator/rules/validate-rules/string/regex-matches-value.field-v-rule';
 
 export class PhoneNumberFieldValidator<
   NAME extends string, REQ extends boolean, IS_ARR extends boolean,
@@ -18,7 +18,7 @@ export class PhoneNumberFieldValidator<
       isArray,
       'string',
       [
-        new RegexFormatValidationRule(
+        new RegexMatchesValueValidationRule(
           /^\+7-\d{3}-\d{3}-\d{2}-\d{2}$/,
           'Строка должна соответствовать формату: "+7-###-##-##"',
         ),
